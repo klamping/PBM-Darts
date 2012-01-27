@@ -54,5 +54,5 @@ var Darts = function () {
 
   var history = populateHistory(gameData);
 
-  $('#history .content').prepend(history.shift(), history[0]);
+//  $('#history .content').prepend(history.shift(), history[0]);
 }();

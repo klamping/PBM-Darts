@@ -2,76 +2,100 @@
 <html>
 	<head>
 	<title>Page Title</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+  
+    <style type="text/css">
+    .target-hits-group .ui-btn-inner {
+      padding: 5px 6px;
+    }
+    .target-hits-group .ui-radio input {
+        left: 0;
+    }
+    .ui-li-has-count .ui-btn-text {
+        padding: 0;
+    }
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
-	<link rel="stylesheet" href="styles/jqMobile.css" />
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.0a4.1.min.js"></script>
 	<script type="text/javascript" src="js/ICanHaz.js"></script>
 
-  <script id="gameHistory" type="text/html">
-    <table summary="History of games between players" class="gameHistory">
-      <thead>
-        <tr>
-          <th scope="col" class="gameHistory-colGame"><span class="data-liner">Game</span></th>
-          <th scope="col" class="gameHistory-colP1"><span class="data-liner">Kevin</span></th>
-          <th scope="col" class="gameHistory-colP2"><span class="data-liner">Paul</span></th>
-          <th scope="col" class="gameHistory-colOptions"><span class="data-liner">Options</span></th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>All-time</th>
-          <td>{{p1Wins}}</td>
-          <td>{{p2Wins}}</td>
-          <td></td>
-        </tr>
-      </tfoot>
-      <tbody>
-      </tbody>
-    </table>
-  </script>
-
-  <script id="gameResults" type="text/html">
-      <tr>
-        <th scope="row">{{gameNumber}}</th>
-        <td class="score{{p1Winner}}">{{p1Score}}</td>
-        <td class="score{{p2Winner}}">{{p2Score}}</td>
-        <td><a href="#game" data-role="button" data-gameNumber="{{gameNumber}}">View</a></td>
-      </tr>
-  </script>
-
-   <script id="user" type="text/html">
-      <li>
-        <p>Hi I&apos;m <a href="http://twitter.com/{{ twitter }}">@{{ twitter }}</a></p>
-        <p>I work for {{ employer }} as a {{ job_title }}.</p>
-      </li>
+    <script id="history" type="text/html">
+        <ul data-role="listview" data-theme="c">
+            {{#each game}}
+            {{history-game}}
+            {{/each}}
+            {{history-total}}
+        </ul>
     </script>
+  
+      <script id="history-game" type="text/html">
+            {{#if in-progress}}
+            <li data-theme="e">
+            {{else}}
+            <li>
+            {{/if}}
+                <a href="#game">
+                    <h2 class="ul-li-heading">{{winner}}</h2> <!-- You win with 354 points -->
+                    <p>{{loser}}</p> <!-- Kevin had 353 points -->
+                    {{#if in-progress}}
+                    <p class="ui-li-count">In Progress</p>
+                    {{/if}}
+                </a>
+            </li>
+      </script>
+      
+      <script id="history-total" type="text/html">
+      
+      </script>
+
+  <script id="game" type="text/html">
+  
+  </script>
+  
+      <script id="game-round" type="text/html">
+      
+      </script>
+      
+      <script id="game-total" type="text/html">
+      
+      </script>
+  
+  <script id="round" type="text/html">
+  
+  </script>
+  
+      <script id="round-throw" type="text/html">
+      
+      </script>
+      
+      <script id="round-total" type="text/html">
+      
+      </script>
 
   <script>
     var gameData = {
       games: [
         ["123456712345671234567","123456712345671234567"],
         ["254387321512311234567","116501712345671234567"],
-        ["254387321512311234567","569936541987671234567"]
+        ["2543873215123","5699365"]
       ]
     };
   </script>
-
 </head>
 <body>
 
 
 <!-- Start of first page -->
 <div data-role="page" id="history">
-
 	<div data-role="header">
-		<h1>Game History</h1>
+		<h1>Games</h1>
+        <a href="#game" data-icon="plus" data-theme="b" id="start-game" class="ui-btn-right">New Game</a>
 	</div><!-- /header -->
 
 	<div data-role="content" class="content">
-    <a href="#game" data-role="button">New Game</a>
+        
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -82,29 +106,42 @@
 
 <!-- Start of second page -->
 <div data-role="page" id="game">
-
 	<div data-role="header">
-    <a href="history" data-direction="reverse">Game History</a>
+        <a href="#history" data-role="button" data-direction="reverse" data-icon="arrow-l">Game History</a>
 		<h1>Game #1</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<h2>Bar</h2>
-    <ol class="round-history">
-      <li class="round-history-item">
-        <p><span class="hidden">Total Score </span>128</p>
-        <a href="#round" data-role="button">Edit</a>
-      </li>
-      <li class="round-history-item">
-        <p><span class="hidden">Not Played </span></p>
-        <a href="#round" data-role="button">Play</a>
-      </li>
-      <li class="round-history-item">
-        <p class="round-history-score"><span class="hidden">Not Played </span></p>
-        <a href="#round" data-role="button">Play</a><!-- Disable this button -->
-      </li>
-    </ol>
-		<p><button type="submit" disabled="disabled">Submit Game</button></p>
+    
+    
+        <ul data-role="listview" data-theme="d">
+            <li>
+                <a href="#round">
+                    <strong class="ui-li-heading">92 points</strong>
+                    <p>Kevin with 22</p>
+                </a>
+            </li>
+            <li>
+                <a href="#round">
+                    <strong class="ui-li-heading">74 points</strong>
+                    <p>Kevin with 22</p>
+                </a>
+            </li>
+            <li>
+                <a href="#round">
+                    <strong class="ui-li-heading">10 points</strong>
+                    <p>Kevin with 22</p>
+                    <p class="ui-li-count">4 throws left</p>
+                </a>
+            </li>
+            <li data-theme="c">
+                <strong class="ui-li-heading">Total: 104 points</strong>
+                <p>Kevin's Total: 103 points</p>
+            </li>
+            <li data-theme="b" data-icon="check">
+                <a href="#history">Save Game</a>
+            </li>
+        </ul>
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -114,14 +151,57 @@
 
 
 <!-- Start of second page -->
-<div data-role="page" id="round">
+<div data-role="page" id="round" data-theme="c">
 
 	<div data-role="header">
-    <a href="history" data-direction="reverse">Game #1</a>
+        <a href="#game" data-direction="reverse" data-role="button" data-icon="arrow-l">Game #1</a>
 		<h1>Round #1</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
+        <ul data-role="listview" data-theme="a">
+            <li>
+                <div class="target-hits-group">
+                <div data-role="fieldcontain">
+                  <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend class="heading">Hits on 15:</legend>
+                    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-0" value="choice-0" />
+                   	<label for="radio-choice-a-0">0</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-1" value="choice-1" />
+                   	<label for="radio-choice-a-1">1</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-2" value="choice-2"  />
+                   	<label for="radio-choice-a-2">2</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-3" value="choice-3"  />
+                   	<label for="radio-choice-a-3">3</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-4" value="choice-4"  />
+                   	<label for="radio-choice-a-4">4</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-5" value="choice-5"  />
+                   	<label for="radio-choice-a-5">5</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-6" value="choice-6"  />
+                   	<label for="radio-choice-a-6">6</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-7" value="choice-7"  />
+                   	<label for="radio-choice-a-7">7</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-8" value="choice-8"  />
+                   	<label for="radio-choice-a-8">8</label>
+    
+                   	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-9" value="choice-9"  />
+                   	<label for="radio-choice-a-9">9</label>
+                  </fieldset>
+                  <span class="ui-li-count">Opponent hits: 2</span>
+                </div>
+                </div>
+            </li>
+        </ul>
+    
     <form data-direction="reverse" action="index.html#game" method="get">
       <table class="round-details">
         <tr>
@@ -133,40 +213,7 @@
         <tr>
           <td>15</td>
           <td class="target-hits-group">
-            <div data-role="fieldcontain">
-              <fieldset data-role="controlgroup" data-type="horizontal">
-              	<legend><span class="hidden">Number of hits:</span></legend>
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-0" value="choice-0" checked="checked" />
-               	<label for="radio-choice-a-0">0</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-1" value="choice-1" />
-               	<label for="radio-choice-a-1">1</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-2" value="choice-2"  />
-               	<label for="radio-choice-a-2">2</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-3" value="choice-3"  />
-               	<label for="radio-choice-a-3">3</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-4" value="choice-4"  />
-               	<label for="radio-choice-a-4">4</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-5" value="choice-5"  />
-               	<label for="radio-choice-a-5">5</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-6" value="choice-6"  />
-               	<label for="radio-choice-a-6">6</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-7" value="choice-7"  />
-               	<label for="radio-choice-a-7">7</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-8" value="choice-8"  />
-               	<label for="radio-choice-a-8">8</label>
-
-               	<input type="radio" name="radio-choice-a-1" id="radio-choice-a-9" value="choice-9"  />
-               	<label for="radio-choice-a-9">9</label>
-              </fieldset>
-            </div>
+            
           </td>
           <td>0</td>
           <td>0</td>
