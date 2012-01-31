@@ -1,4 +1,18 @@
 var gameData = {
+    games : [
+        {
+            player: "Paul",
+            throws: [1234567,1234567,1234567]
+        },
+        {
+            player: "Kevin",
+            throws: [1234567,1234567,2234567]
+        }
+    ],
+    hitValue: [15,16,17,18,19,20,25]
+};
+
+var gameData = {
     players: ["Paul", "Kevin"],
     games: [
         ["111111122222223333333", "000000100000020000003"], // paul with 780, kevin with 150
