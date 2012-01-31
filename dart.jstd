@@ -1,0 +1,3 @@
+load:
+- js/*.js
+- js-test/*.js
