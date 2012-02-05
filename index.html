@@ -2,8 +2,8 @@
 <html>
 	<head>
 	<title>Page Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
 
-    <link rel="stylesheet"  href="//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
     <style type="text/css">
     .target-hits-group .ui-btn-inner {
       padding: 5px 6px;
@@ -20,6 +20,15 @@
     <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 	<script type="text/javascript" src="js/knockout-2.0.0.js"></script>
 
+    <script>
+        var gameData = {
+          games: [
+            ["123456712345671234567","123456712345671234567"],
+            ["254387321512311234567","116501712345671234567"],
+            ["2543873215123","5699365"]
+          ]
+        };
+    </script>
 </head>
 <body>
 
@@ -32,19 +41,26 @@
 	</div><!-- /header -->
 
 	<div data-role="content" class="content">
-        <ul data-role="listview" data-theme="c" data-bind="foreach: games">
-            <li data-bind="attr: { 'data-theme': theme }">
-                <a href="#game" data-bind="click: $root.goToGame">
-                    <h2 class="ul-li-heading" data-bind="text: winner"></h2>
-                    <p data-bind="text: loser"></p>
-                    <p class="ui-li-count" data-bind="visible: isInProgress">In Progress</p>
+
+        <ul data-role="listview" data-theme="c">
+            {{#if in-progress}}
+            <li data-theme="e">
+            {{else}}
+            <li>
+            {{/if}}
+                <a href="#game">
+                    <h2 class="ul-li-heading">{{winner}}</h2> <!-- You win with 354 points -->
+                    <p>{{loser}}</p> <!-- Kevin had 353 points -->
+                    {{#if in-progress}}
+                    <p class="ui-li-count">In Progress</p>
+                    {{/if}}
                 </a>
             </li>
         </ul>
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Lamping Association of Remote Darts</h4>
+		<h4>Lamping Associtation of Remote Darts</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
 
@@ -57,12 +73,26 @@
 	</div><!-- /header -->
 
 	<div data-role="content">
-        <ul data-role="listview" data-theme="d" data-bind="with: chosenGameData">
-            <li data-bind="forEach: rounds">
+
+
+        <ul data-role="listview" data-theme="d">
+            <li>
+                <a href="#round">
+                    <strong class="ui-li-heading">92 points</strong>
+                    <p>Kevin with 22</p>
+                </a>
+            </li>
+            <li>
+                <a href="#round">
+                    <strong class="ui-li-heading">74 points</strong>
+                    <p>Kevin with 22</p>
+                </a>
+            </li>
+            <li>
                 <a href="#round">
                     <strong class="ui-li-heading">10 points</strong>
                     <p>Kevin with 22</p>
-                    <p class="ui-li-count" data-bind="visible: areThrowsLeft">4 throws left</p>
+                    <p class="ui-li-count">4 throws left</p>
                 </a>
             </li>
             <li data-theme="c">
@@ -76,7 +106,7 @@
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Lamping Association of Remote Darts</h4>
+		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
 
@@ -397,11 +427,11 @@
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Lamping Association of Remote Darts</h4>
+		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
 
+	<script type="text/javascript" src="js/darts.js"></script>
 
-    <script type="text/javascript" src="js/dart-app.js"></script>
 </body>
 </html>
