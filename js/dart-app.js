@@ -7,6 +7,5 @@ var Game = function () {
 
 var Games = function () {
     var self = this;
-    self.games = [
-    ];
+    self.games = [];
 };
