@@ -55,5 +55,8 @@ TestCase("Game Functionality", {
     },
     "test that Game has two players":function () {
         assertEquals("Number of players", "2", this.game.players.length);
+    },
+    "test that sGame has two players":function () {
+        assertEquals("Number of players", "2", this.game.players.length);
     }
 });
