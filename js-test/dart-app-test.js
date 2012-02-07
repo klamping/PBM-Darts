@@ -1,3 +1,15 @@
+// game data
+// game 1
+//   player 1 : Paul
+//      total : 280
+//   player 2 : Kevin
+//      total : 0
+// game 2
+//   player 1 : Paul
+//      total : 260
+//   player 2 : Kevin
+//      total : 275
+
 var gamesData = [
     [
         {
@@ -61,104 +73,6 @@ var gamesData = [
     ],
     [
         {
-            "name" : "Kevin",
-            "rounds" : [
-                [
-                    {
-                        "value" : 15,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 16,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 17,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 18,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 19,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 20,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 25,
-                        "hits" : 1,
-                        "maxHits" : 6
-                    }
-                ],
-                [
-                    {
-                        "value" : 15,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 16,
-                        "hits" : 0
-                    },
-                    {
-                        "value" : 17,
-                        "hits" : 0
-                    },
-                    {
-                        "value" : 18,
-                        "hits" : 0
-                    },
-                    {
-                        "value" : 19,
-                        "hits" : 0
-                    },
-                    {
-                        "value" : 20,
-                        "hits" : 0
-                    },
-                    {
-                        "value" : 25,
-                        "hits" : 0,
-                        "maxHits" : 6
-                    }
-                ],
-                [
-                    {
-                        "value" : 15,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 16,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 17,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 18,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 19,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 20,
-                        "hits" : 1
-                    },
-                    {
-                        "value" : 25,
-                        "hits" : 1,
-                        "maxHits" : 6
-                    }
-                ]
-            ]
-        },
-        {
             "name" : "Paul",
             "rounds" : [
                 [
@@ -227,6 +141,104 @@ var gamesData = [
                     {
                         "value" : 15,
                         "hits" : 0
+                    },
+                    {
+                        "value" : 16,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 17,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 18,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 19,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 20,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 25,
+                        "hits" : 1,
+                        "maxHits" : 6
+                    }
+                ]
+            ]
+        },
+        {
+            "name" : "Kevin",
+            "rounds" : [
+                [
+                    {
+                        "value" : 15,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 16,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 17,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 18,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 19,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 20,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 25,
+                        "hits" : 1,
+                        "maxHits" : 6
+                    }
+                ],
+                [
+                    {
+                        "value" : 15,
+                        "hits" : 1
+                    },
+                    {
+                        "value" : 16,
+                        "hits" : 0
+                    },
+                    {
+                        "value" : 17,
+                        "hits" : 0
+                    },
+                    {
+                        "value" : 18,
+                        "hits" : 0
+                    },
+                    {
+                        "value" : 19,
+                        "hits" : 0
+                    },
+                    {
+                        "value" : 20,
+                        "hits" : 0
+                    },
+                    {
+                        "value" : 25,
+                        "hits" : 0,
+                        "maxHits" : 6
+                    }
+                ],
+                [
+                    {
+                        "value" : 15,
+                        "hits" : 1
                     },
                     {
                         "value" : 16,
@@ -260,11 +272,19 @@ var gamesData = [
     [
         {
             "name" : "Paul",
-            "rounds" : []
+            "rounds" : [
+                [
+                    {
+                        "value" : 15,
+                        "hits" : 0
+                    }
+                ]
+            ]
         },
         {
             "name" : "Kevin",
-            "rounds" : []
+            "rounds" : [
+            ]
         }
     ]
 ];
@@ -342,19 +362,24 @@ TestCase("Game Functionality", {
         this.gameTwo = new Game(gamesData[1]);
     },
     "test game leader" : function () {
-        assertEquals("Game One Leader", "Paul", this.gameOne.standings[0]);
-        assertEquals("Game Two Leader", "Kevin", this.gameTwo.standings[0]);
+        assertEquals("Game one leader", 0, this.gameOne.standings[0]);
+        assertEquals("Game two leader", 1, this.gameTwo.standings[0]);
     },
     "test game follower" : function () {
-        assertEquals("Game One Follower", "Kevin", this.gameOne.standings[1]);
-        assertEquals("Game Two Follower", "Paul", this.gameTwo.standings[1]);
+        assertEquals("Game one follower", 1, this.gameOne.standings[1]);
+        assertEquals("Game two follower", 0, this.gameTwo.standings[1]);
     },
     "test game in progress" : function () {
-        assertTrue("Game One in Progress", this.gameOne.isInProgress);
-        assertFalse("Game Two in Progress", this.gameTwo.isInProgress);
+        assertTrue("Game one in Progress", this.gameOne.isInProgress);
+        assertFalse("Game two in Progress", this.gameTwo.isInProgress);
     }
 });
 
 TestCase("Games Functionality", {
-
+    setUp : function () {
+        this.games = new Games(gamesData);
+    },
+    "test game record" : function () {
+        assertEquals("Games record", [0, 1], this.games.record);
+    }
 });

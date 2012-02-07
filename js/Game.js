@@ -5,9 +5,10 @@ var Game = function (gameData) {
     var parsePlayers = function (data) {
         var players = [],
             numPlayers = data.length,
-            tmpPlayer;
-        while(numPlayers--){
-            tmpPlayer = new Player(data[numPlayers]);
+            tmpPlayer,
+            x = 0;
+        for(; x < numPlayers; x += 1){
+            tmpPlayer = new Player(data[x]);
             if (!self.isInProgress && tmpPlayer.hasThrowsLeft > 0) {
                 self.isInProgress = true;
             }
@@ -19,8 +20,7 @@ var Game = function (gameData) {
     var getStandings = function (players) {
         var standings = [],
             winner = players[0].total > players[1].total ? 0 : 1;
-
-        standings = [players[winner].name, players[1 - winner].name];
+         standings = [winner, 1 - winner];
 
         return standings;
     };
