@@ -5,8 +5,10 @@ var Game = function () {
     self.players = ["Player 1", "Player 2"];
 };
 
-var Games = function () {
+var Games = function (gameData) {
     var self = this;
     self.games = [
+        new Game(),
+        new Game()
     ];
 };
