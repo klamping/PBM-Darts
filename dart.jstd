@@ -1,8 +1,0 @@
-load:
-- js/*.js
-
-test:
-- js-test/*.js
-
-exclude:
- - js/dart-app-legacy.js
