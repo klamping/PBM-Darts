@@ -105,6 +105,6 @@ var players = {
     },
     1: {
         "name": "Paul",
-        "email": "36420136+grahampasmurf@users.noreply.github.com"
+        "email": "paul@gmail.com"
     }
 }
